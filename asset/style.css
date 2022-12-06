@@ -1,0 +1,28 @@
+:root{
+    --primary-color: #e7dfd8
+}
+body{
+    background-color: var(--primary-color);
+}
+header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+header h1{
+    padding: 10px;
+}
+header nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+}
+header nav ul li{
+    padding:  10px 20px;
+}
+.carousel{
+    background-color: aliceblue;
+    border: solid black 3px;
+    height: 10px;
+}

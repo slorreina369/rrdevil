@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS rr_devil;
+
+CREATE DATABASE rr_devil;

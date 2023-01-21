@@ -1,3 +1,3 @@
-const Review = require("./Review");
+const Queue = require("./Queue");
 
-module.exports = { Review };
+module.exports = { Queue };

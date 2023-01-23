@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Policies extends Model {}
+class Policy extends Model {}
 
-Policies.init(
+Policy.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -25,4 +25,4 @@ Policies.init(
   }
 );
 
-module.exports = Policies;
+module.exports = Policy;

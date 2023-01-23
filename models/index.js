@@ -1,5 +1,5 @@
 const Queue = require("./Queue");
-const Approved = require("./Approved");
+const Article = require("./Article");
 const Policy = require("./Policy");
 
-module.exports = { Queue, Approved, Policy };
+module.exports = { Queue, Article, Policy };

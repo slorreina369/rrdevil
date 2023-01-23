@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const { Approved } = require("../../models");
+const { Article } = require("../../models");
 
 //GET ALL
 router.get("/", (req, res) => {
-  Approved.findAll()
-    .then((dbApprovedData) => res.json(dbApprovedData))
+  Article.findAll()
+    .then((dbArticleData) => res.json(dbArticleData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -12,17 +12,17 @@ router.get("/", (req, res) => {
 });
 //GET ONE
 router.get("/:id", (req, res) => {
-  Approved.findOne({
+  Article.findOne({
     where: {
       id: req.params.id,
     },
   })
-    .then((dbApprovedData) => {
-      if (!dbApprovedData) {
+    .then((dbArticleData) => {
+      if (!dbArticleData) {
         res.status(404).json({ message: "No article was found with this id" });
         return;
       }
-      res.json(dbApprovedData);
+      res.json(dbArticleData);
     })
     .catch((err) => {
       console.log(err);
@@ -36,7 +36,7 @@ router.post("/", (req, res) => {
     author: req.body.author,
     article_url: req.body.article_url,
   })
-    .then((dbApprovedData) => res.json(dbApprovedData))
+    .then((dbArticleData) => res.json(dbArticleData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -44,12 +44,12 @@ router.post("/", (req, res) => {
 });
 //PUT
 router.put("/:id", (req, res) => {
-  Approved.update(req.body, {
+  Article.update(req.body, {
     where: {
       id: req.params.id,
     },
-  }).then((dbApprovedData) => {
-    if (!dbApprovedData) {
+  }).then((dbArticleData) => {
+    if (!dbArticleData) {
       res.status(404).json({ message: "No article was found with this id" });
       return;
     }
@@ -57,17 +57,17 @@ router.put("/:id", (req, res) => {
 });
 //DELETE
 router.delete("/:id", (req, res) => {
-  Approved.destroy({
+  Article.destroy({
     where: {
       id: req.params.id,
     },
   })
-    .then((dbApprovedData) => {
-      if (!dbApprovedData) {
+    .then((dbArticleData) => {
+      if (!dbArticleData) {
         res.status(404).json({ message: "No article was found with this id" });
         return;
       }
-      res.json(dbApprovedData);
+      res.json(dbArticleData);
     })
     .catch((err) => {
       console.log(err);

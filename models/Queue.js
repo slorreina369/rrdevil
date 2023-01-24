@@ -26,7 +26,7 @@ Queue.init(
         isUrl: true,
       },
     },
-    policy_cat: {
+    policy: {
       type: DataTypes.STRING,
       allowNull: true,
     },

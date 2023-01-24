@@ -26,9 +26,12 @@ Article.init(
         isUrl: true,
       },
     },
-    policy_cat: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    policy_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "policy",
+        key: "id",
+      },
     },
     summary: {
       type: DataTypes.STRING,

@@ -41,7 +41,7 @@ Article.init(
   {
     sequelize,
     timestamps: true,
-    freezeTableName,
+    freezeTableName: true,
     underscored: true,
     modelName: "article",
   }

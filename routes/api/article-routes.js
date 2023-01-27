@@ -31,10 +31,12 @@ router.get("/:id", (req, res) => {
 });
 //POST
 router.post("/", (req, res) => {
-  Queue.create({
+  Article.create({
     title: req.body.title,
     author: req.body.author,
     article_url: req.body.article_url,
+    policy_id: req.body.policy_id,
+    summary: req.body.summary,
   })
     .then((dbArticleData) => res.json(dbArticleData))
     .catch((err) => {

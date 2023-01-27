@@ -4,7 +4,7 @@ const articleRoutes = require("./article-routes");
 const policyRoutes = require("./policy-routes");
 
 router.use("/queue", queueRoutes);
-router.use("./approved", articleRoutes);
-router.use("./policies", policyRoutes);
+router.use("/articles", articleRoutes);
+router.use("/policies", policyRoutes);
 
 module.exports = router;

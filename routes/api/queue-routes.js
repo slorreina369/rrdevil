@@ -37,6 +37,8 @@ router.post("/", (req, res) => {
     title: req.body.title,
     author: req.body.author,
     article_url: req.body.article_url,
+    policy_cat: req.body.policy_cat,
+    summary: req.body.summary,
     email: req.body.email,
   })
     .then((dbQueueData) => res.json(dbQueueData))

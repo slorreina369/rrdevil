@@ -9,7 +9,7 @@ Policy.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement,
+      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -19,7 +19,7 @@ Policy.init(
   {
     sequelize,
     timestamps: true,
-    freezeTableName,
+    freezeTableName: true,
     underscored: true,
     modelName: "policy",
   }

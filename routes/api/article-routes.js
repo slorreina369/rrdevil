@@ -1,9 +1,17 @@
 const router = require("express").Router();
-const { Article } = require("../../models");
+const { Article, Policy } = require("../../models");
 
 //GET ALL
 router.get("/", (req, res) => {
-  Article.findAll()
+  Article.findAll({
+    attributes: ["id", "title", "author", "article_url", "summary"],
+    include: [
+      {
+        model: Policy,
+        attributes: ["name"],
+      },
+    ],
+  })
     .then((dbArticleData) => res.json(dbArticleData))
     .catch((err) => {
       console.log(err);

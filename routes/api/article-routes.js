@@ -24,6 +24,13 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    attributes: ["id", "title", "author", "article_url", "summary"],
+    include: [
+      {
+        model: Policy,
+        attributes: ["name"],
+      },
+    ],
   })
     .then((dbArticleData) => {
       if (!dbArticleData) {

@@ -1,9 +1,17 @@
 const router = require("express").Router();
-const { Policy } = require("../../models");
+const { Policy, Article } = require("../../models");
 
 //GET ALL
 router.get("/", (req, res) => {
-  Policy.findAll()
+  Policy.findAll({
+    attributes: ["id", "name"],
+    include: [
+      {
+        model: Article,
+        attributes: ["title", "author", "article_url", "summary"],
+      },
+    ],
+  })
     .then((dbPolicyData) => res.json(dbPolicyData))
     .catch((err) => {
       console.log(err);
@@ -17,6 +25,13 @@ router.get("/:id", (req, res) => {
       where: {
         id: req.params.id,
       },
+      attributes: ["id", "name"],
+      include: [
+        {
+          model: Article,
+          attributes: ["title", "author", "article_url", "summary"],
+        },
+      ],
     })
       .then((dbPolicyData) => {
         if (!dbPolicyData) {

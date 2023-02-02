@@ -43,3 +43,7 @@ header nav li {
 .carousel {
   border: solid 3px var(--secondary-color);
 }
+.about {
+  margin: 0 5vw;
+  text-align: center;
+}

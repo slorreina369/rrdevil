@@ -36,6 +36,12 @@ header nav li {
   font-family: "Times New Roman", Times, serif;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
 .container {
   vertical-align: middle;
   padding: 5vw 0;

@@ -53,3 +53,18 @@ footer {
   margin: 0 5vw;
   text-align: center;
 }
+.contact {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  margin: 4vw;
+}
+
+.message,
+.submit {
+  border: solid 2px var(--tertiary-color);
+  padding: 4vw;
+  display: block;
+  margin: 2vw;
+  border-radius: 20px;
+}

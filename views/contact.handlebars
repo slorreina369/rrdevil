@@ -8,7 +8,11 @@
         Feel free to reach out if you have any qestions or concerns
       </p>
       <div class="message-form">
-        <form>
+        <form
+          action="mailto:lorreinag93@gmail.com"
+          method="post"
+          enctype="text/plain"
+        >
           <div class="mb-3">
             <label
               for="contact-name"
@@ -19,6 +23,20 @@
               type="text"
               class="form-control"
               placeholder="What do I call you?"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="contact-email"
+              class="col-sm-2 col-form-label"
+            >Email</label>
+            <input
+              id="contact-email"
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              required
             />
           </div>
 
@@ -32,11 +50,12 @@
               class="form-control form-control-lg"
               placeholder="Message"
               rows="10"
+              required
             ></textarea>
           </div>
 
           <button
-            type="button"
+            type="submit"
             class="btn btn-outline-secondary mt-4"
           >Submit</button>
         </form>

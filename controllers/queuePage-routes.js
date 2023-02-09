@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Queue = require("../models");
+const { Queue } = require("../models");
 
 router.get("/", (req, res) => {
   Queue.findAll({
@@ -14,7 +14,9 @@ router.get("/", (req, res) => {
     ],
   })
     .then((dbQueueData) => {
-      res.render("queue", dbQueueData[0]);
+      const queues = dbQueueData.map((queue) => queue.get({ plain: true }));
+
+      res.render("queue", { queues });
     })
     .catch((err) => {
       console.log(err);

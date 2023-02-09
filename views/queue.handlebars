@@ -1,12 +1,27 @@
-<ol class="queue-list">
+<ul class="queue-list list-group-flush">
   {{#each queues}}
-    <li>
-      <article class="queue">
-        <div class="title">
-          <a href="{{article_url}}" target="_blank">{{title}}</a>
+    <li class="list-group-item card border border-6 rounded m-5">
+      <article class="queue card-body">
+        <div class="title card-title">
+          <a
+            href="{{article_url}}"
+            card="card-link"
+            target="_blank"
+          >{{title}}</a>
           <span>({{article_url}})</span>
+        </div>
+        <div class="author">
+          Written by
+          {{author}}
+        </div>
+        <div class="summary">
+          {{summary}}
+        </div>
+        <div class="fw-bold">
+          Submitted by
+          {{email}}
         </div>
       </article>
     </li>
   {{/each}}
-</ol>
+</ul>

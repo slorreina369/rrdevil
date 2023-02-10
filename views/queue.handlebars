@@ -1,21 +1,30 @@
-<ul class="queue-list list-group-flush">
+<ul class="queue-list list-group-flush m-2">
   {{#each queues}}
-    <li class="list-group-item card border border-6 rounded m-5">
+    <li
+      class="list-group-item card border border-6 rounded m-5 p-2 mx-auto"
+      style="width: 70rem;"
+    >
       <article class="queue card-body">
-        <div class="title card-title">
+        <div class="img">
+          <img
+            src="{{preview.images}}"
+            class="card-img-top"
+            style="height: 25rem;"
+          />
+        </div>
+        <div class="title card-title d-flex flex-column">
           <a
-            href="{{article_url}}"
+            href="{{preview.url}}"
             card="card-link"
             target="_blank"
-          >{{title}}</a>
-          <span>({{article_url}})</span>
+          >{{preview.title}}</a>
         </div>
         <div class="author">
           Written by
           {{author}}
         </div>
         <div class="summary">
-          {{summary}}
+          {{preview.description}}
         </div>
         <div class="fw-bold">
           Submitted by

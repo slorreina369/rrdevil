@@ -27,12 +27,12 @@
             <li class="dropdown">
               <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded='false'>
                 Policies
-              <button>
+              <button>  
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Test One</a></li>
-                <li><a class="dropdown-item" href="#">Test Two</a></li>
-                <li><a class="dropdown-item" href="#">Test Three</a></li>
-              </ul>  
+                {{#each policies}}
+                  <li><a class="dropdown-item" href="#">{{name}}</a></li>
+                {{/each}}
+              </ul>
             </li>
             <li>
               <button class="btn" type="button"><a href="/contact">Contact</a><button>

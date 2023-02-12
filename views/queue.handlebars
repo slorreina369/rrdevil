@@ -1,8 +1,9 @@
 <ul class="queue-list list-group-flush m-2">
   {{#each queues}}
     <li
-      class="list-group-item card border border-6 rounded m-5 p-2 mx-auto"
-      style="width: 70rem;"
+      data-id="{{id}}"
+      class="queue-list-itm list-group-item card border border-6 rounded m-5 p-2 mx-auto"
+      style="width: 60rem;"
     >
       <article class="queue card-body">
         <div class="img">
@@ -32,9 +33,17 @@
         </div>
       </article>
       <div class="buttons float-end">
-        <button type="button" class="btn btn-outline-danger">Decline</button>
-        <button type="button" class="btn btn-outline-success">Accept</button>
+        <button
+          type="button"
+          class="decline btn btn-outline-danger"
+        >Decline</button>
+        <button
+          type="button"
+          class="accept btn btn-outline-success"
+        >Accept</button>
       </div>
     </li>
   {{/each}}
 </ul>
+
+<script src="/js/decline-queue.js"></script>

@@ -15,13 +15,6 @@ Policy.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    article_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "article",
-        key: "id",
-      },
-    },
   },
   {
     sequelize,

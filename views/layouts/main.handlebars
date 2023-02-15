@@ -25,14 +25,14 @@
               <button class="btn" type="button">Bio<button>
             </li>
             <li class="dropdown">
-              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded='false'>
-                Policies
-              <button>  
-              <ul class="dropdown-menu">
-                {{#each policies}}
-                  <li><a class="dropdown-item" href="#">{{name}}</a></li>
-                {{/each}}
-              </ul>
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded='false'>
+              Policies
+            <button>  
+            <ul class="dropdown-menu">
+              {{#each policies}}
+                  <li><a class="dropdown-item" href="/policies/{{id}}">{{name}}</a></li>
+              {{/each}}
+            </ul>
             </li>
             <li>
               <button class="btn" type="button"><a href="/contact">Contact</a><button>

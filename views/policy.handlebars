@@ -1,11 +1,26 @@
-<ul class="article-list list-group-flsuh m-2">
-  {{#each policy.articles}}
-    <li class="article-list-itm list-group item card border border-6 mx-auto">
+<ul class="article-list list-group-flush m-2">
+  {{#each articles}}
+    <li
+      class="article-list-itm list-group-item card border border-6 rounded m-5 p-2 mx-auto"
+      style="width:60rem"
+    >
       <article class="article card-body">
-        <div class="title">
-          {{title}}
+        <div class="img">
+          <img
+            src="{{preview.images}}"
+            class="card-img-top"
+            style="height:25rem"
+          />
         </div>
-        <div class="author"></div>
+        <div class="title card-title d-flex flex-column">
+          <a
+            href="{{preview.url}}"
+            card="card-link"
+            target="_blank"
+          >{{preview.title}}</a>
+        </div>
+        <div class="author">Written By{{preview.author}}</div>
+        <div class="summary">{{preview.description}}</div>
       </article></li>
   {{/each}}
 </ul>

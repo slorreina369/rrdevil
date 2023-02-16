@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Policy, Article } = require("../models");
-//const { getLinkPreview } = require("link-preview-js");
+const { getLinkPreview } = require("link-preview-js");
 
 router.get("/:id", async (req, res) => {
   Policy.findOne({
@@ -25,8 +25,20 @@ router.get("/:id", async (req, res) => {
       }
       const policy = dbPolicyData.get({ plain: true });
       console.log(policy.articles);
+
+      return Promise.all(
+        policy.articles.map((article) =>
+          getLinkPreview(article.article_url).then((data) => ({
+            ...article,
+            preview: data,
+          }))
+        )
+      );
+    })
+    .then((articles) => {
+      console.log(articles);
       res.render("policy", {
-        policy,
+        articles,
       });
     })
     .catch((err) => {

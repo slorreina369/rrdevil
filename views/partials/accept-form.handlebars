@@ -1,0 +1,35 @@
+<dialog class="accept-dia align-text-top my-auto mx-auto">
+  <form class="accept-form" method="dialog">
+    <input type="hidden" name="id" value="{{id}}" />
+    <h3>Please Confirm</h3>
+    <div>
+      <label>Title</label>
+      {{preview.title}}
+    </div>
+    <div>
+      <label>Author</label>
+      {{author}}
+    </div>
+    <div>
+      <label>Article Link</label>
+      {{preview.url}}
+    </div>
+    <div>
+      <label>Summary</label>
+      {{preview.description}}
+    </div>
+    <div>
+      <label>Which Policy?</label>
+      <select>
+        <option value="default">Choose...</option>
+        {{#each policies}}
+          <option>{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-outline-secondary d-block mx-auto"
+    >Confirm</button>
+  </form>
+</dialog>

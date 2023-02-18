@@ -20,16 +20,16 @@
     </div>
     <div>
       <label>Which Policy?</label>
-      <select>
+      <select class="policy-list">
         <option value="default">Choose...</option>
         {{#each policies}}
-          <option>{{name}}</option>
+          <option value="{{id}}">{{name}}</option>
         {{/each}}
       </select>
     </div>
-    <button
-      type="submit"
-      class="btn btn-outline-secondary d-block mx-auto"
-    >Confirm</button>
+    <div class="mx-auto">
+      <button value="cancel" class="btn btn-outline-danger">Nevermind</button>
+      <button type="submit" class="btn btn-outline-success">Confirm</button>
+    </div>
   </form>
 </dialog>

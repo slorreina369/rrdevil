@@ -1,3 +1,6 @@
+const closeButton = document.querySelector(".close-btn");
+const dialogue = document.querySelector(".accept-dia");
+
 async function confirmFormHandler(event) {
   event.preventDefault();
 
@@ -39,4 +42,10 @@ async function confirmFormHandler(event) {
 
 document.querySelectorAll(".accept-form").forEach((el) => {
   el.addEventListener("submit", confirmFormHandler);
+});
+
+document.querySelectorAll(".accept-dia").forEach((closeButton) => {
+  closeButton.addEventListener("click", () => {
+    dialogue.close();
+  });
 });

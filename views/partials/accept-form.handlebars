@@ -1,31 +1,50 @@
 <dialog class="accept-dia align-text-top my-auto mx-auto">
-  <form class="accept-form" method="dialog">
+  <form
+    class="accept-form container-fluid"
+    method="dialog"
+    style="width: 70vw;"
+  >
     <input type="hidden" class="submission-id" value="{{id}}" />
-    <h3>Please Confirm</h3>
-    <div class="mt-3 mb-3">
+    <h3 class="m-3">Please Confirm</h3>
+    <div class="form-group m-3">
       <label>Title:</label>
-      <input name="title" class="title" value="{{preview.title}}" readonly />
-    </div>
-    <div class="mt-3 mb-3">
-      <label>Author:</label>
-      <input name="author" class="author" value="{{author}}" readonly />
-    </div>
-    <div class="mt-3 mb-3">
-      <label>Article Link:</label>
-      <input name="art_url" class="art_url" value="{{preview.url}}" readonly />
-    </div>
-    <div class="mt-3 mb-3">
-      <label>Summary:</label>
       <input
-        name="summary"
-        class="summary"
-        value="{{preview.description}}"
+        name="title"
+        class="title form-control form-control-lg"
+        value="{{preview.title}}"
         readonly
       />
     </div>
-    <div class="mt-3 mb-3">
+    <div class="form-group m-3">
+      <label>Author:</label>
+      <input
+        name="author"
+        class="author form-control form-control-lg"
+        value="{{author}}"
+        readonly
+      />
+    </div>
+    <div class="form-group m-3">
+      <label>Article Link:</label>
+      <input
+        name="art_url"
+        class="art_url form-control form-control-lg"
+        value="{{preview.url}}"
+        readonly
+      />
+    </div>
+    <div class="form-group m-3">
+      <label>Summary:</label>
+      <textarea
+        name="summary"
+        class="summary form-control form-control-lg"
+        value="{{preview.description}}"
+        readonly
+      >{{preview.description}}</textarea>
+    </div>
+    <div class="form-group m-3">
       <label>Which Policy?</label>
-      <select class="policy-choice">
+      <select class="policy-choice form-control form-control-lg">
         <option value="default">Choose...</option>
         {{#each policies}}
           <option value="{{id}}">{{name}}</option>

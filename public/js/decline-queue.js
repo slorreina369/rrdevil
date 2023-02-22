@@ -7,10 +7,12 @@ async function deleteFormHandler(event) {
     method: "DELETE",
   });
 
-  if (response.ok) {
-    document.location.replace("/queue/");
-  } else {
-    alert(response.statusText);
+  if (window.confirm("Are you sure?")) {
+    if (response.ok) {
+      document.location.replace("/queue/");
+    } else {
+      alert(response.statusText);
+    }
   }
 }
 

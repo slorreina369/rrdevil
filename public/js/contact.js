@@ -21,9 +21,13 @@ async function newFormHandler(event) {
         email,
       }),
       headers: { "Content-Type": "application/json" },
-    }).then((response) => {
-      console.log(response);
-    });
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .then(() => {
+        location.reload();
+      });
   }
 }
 

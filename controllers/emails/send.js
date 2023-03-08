@@ -4,23 +4,24 @@ const { authenticate } = require("@google-cloud/local-auth");
 
 const gmail = google.gmail("v1");
 
-async function sendEmail(email) {
+async function sendEmail(subject, recipientEmail, body) {
   const auth = await authenticate({
     keyfilePath: path.join(__dirname, "../../config/credentials.json"),
     scopes: ["https://www.googleapis.com/auth/gmail.send"],
   });
   google.options({ auth });
 
-  const subject = "Submission Acknowlegement";
   const messageParts = [
     "From: Lorreina Guyett <lorreinag93@gmail.com>",
-    `To: <${email}>`,
+    `To: <${recipientEmail}>`,
     "Content-Type:text/html; charset=utf-8",
     "MIME-Version: 1.0",
     `Subject: ${subject}`,
     "",
-    "test test motherfuckers",
-    "with Love",
+    "Hello!",
+    body,
+    "Thank you,",
+    "Ronald Reagan Haters",
   ];
   const message = messageParts.join("\n");
 
@@ -39,5 +40,16 @@ async function sendEmail(email) {
   console.log(res.data);
   return res.data;
 }
+async function submissionResponse(recipientEmail) {
+  subject = "Thank you for your submission";
+  body = [
+    "Thank you for your contribution to this collection.",
+    " ",
+    "Before it is added to the list of articles, the submission will need to be reviewed.",
+    "You'll be updated on whether or not the article is added to the list.",
+  ];
 
-module.exports = sendEmail;
+  return sendEmail(subject, recipientEmail, body);
+}
+
+module.exports = submissionResponse;

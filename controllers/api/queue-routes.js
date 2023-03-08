@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Queue } = require("../../models");
-const sendEmail = require("../emails/send");
+const submissionResponse = require("../emails/send");
 
 //GET All
 router.get("/", (req, res) => {
@@ -48,7 +48,7 @@ router.post("/", (req, res) => {
       res.status(500).json(err);
     })
     .then(() => {
-      sendEmail(req.body.email);
+      submissionResponse(req.body.email);
       console.log("email sent");
     });
 });

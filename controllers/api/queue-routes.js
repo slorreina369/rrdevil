@@ -78,20 +78,39 @@ router.put("/:id", (req, res) => {
 });
 //DELETE
 router.delete("/:id", (req, res) => {
-  Queue.destroy({
+  Queue.findOne({
     where: {
       id: req.params.id,
     },
   })
-
-    .then((dbQueueData) => {
-      if (!dbQueueData) {
-        res
-          .status(404)
-          .json({ message: "No submission was found with this id" });
-        return;
-      }
-      res.json(dbQueueData);
+    .then((queue) => {
+      Queue.destroy({
+        where: {
+          id: req.params.id,
+        },
+      })
+        .then((dbQueueData) => {
+          if (!dbQueueData) {
+            res
+              .status(404)
+              .json({ message: "No submission was found with this id" });
+            return;
+          }
+          res.json(dbQueueData);
+        })
+        .then(() => {
+          return Article.findOne({
+            where: {
+              article_url: queue.article_url,
+            },
+          }).then((approvedArticle) => {
+            if (approvedArticle) {
+              approvedEmail(queue.email);
+            } else {
+              declineEmail(queue.email);
+            }
+          });
+        });
     })
     .catch((err) => {
       console.log(err);

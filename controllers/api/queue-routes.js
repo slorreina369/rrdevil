@@ -1,6 +1,10 @@
 const router = require("express").Router();
-const { Queue } = require("../../models");
-const submissionResponse = require("../emails/send");
+const { Queue, Article } = require("../../models");
+const {
+  submissionResponse,
+  approvedEmail,
+  declineEmail,
+} = require("../emails/send");
 
 //GET All
 router.get("/", (req, res) => {
@@ -79,6 +83,7 @@ router.delete("/:id", (req, res) => {
       id: req.params.id,
     },
   })
+
     .then((dbQueueData) => {
       if (!dbQueueData) {
         res

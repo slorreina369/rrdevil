@@ -51,5 +51,16 @@ async function submissionResponse(recipientEmail) {
 
   return sendEmail(subject, recipientEmail, body);
 }
+async function approvedEmail(recipientEmail) {
+  subject = "Your submission was approved";
+  body = [];
 
-module.exports = submissionResponse;
+  return sendEmail(subject, recipientEmail, body);
+}
+async function declineEmail(recipientEmail) {
+  subject = "Your submission was declined";
+  body = [];
+
+  return sendEmail(subject, recipientEmail, body);
+}
+module.exports = { submissionResponse, approvedEmail, declineEmail };

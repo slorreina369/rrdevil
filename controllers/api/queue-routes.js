@@ -37,7 +37,22 @@ router.get("/:id", (req, res) => {
     });
 });
 //POST
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
+  const query_filter = {
+    where: {
+      article_url: req.body.article_url,
+    },
+  };
+  console.log(query_filter);
+  if (
+    (await Article.findOne(query_filter)) ||
+    (await Queue.findOne(query_filter))
+  ) {
+    res
+      .status(400)
+      .json({ message: "This article has already been submitted" });
+    return;
+  }
   Queue.create({
     title: req.body.title,
     author: req.body.author,
@@ -106,8 +121,10 @@ router.delete("/:id", (req, res) => {
           }).then((approvedArticle) => {
             if (approvedArticle) {
               approvedEmail(queue.email);
+              console.log("email sent");
             } else {
               declineEmail(queue.email);
+              console.log("email sent");
             }
           });
         });

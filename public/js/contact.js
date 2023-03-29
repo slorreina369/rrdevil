@@ -21,13 +21,18 @@ async function newFormHandler(event) {
         email,
       }),
       headers: { "Content-Type": "application/json" },
-    })
-      .then((response) => {
-        console.log(response);
-      })
-      .then(() => {
+    }).then((response) => {
+      if (response.ok) {
         location.reload();
-      });
+      } else {
+        const article_url_input = document.querySelector("#article_url");
+
+        response.json().then(({ message }) => {
+          article_url_input.setCustomValidity(message);
+          article_url_input.reportValidity();
+        });
+      }
+    });
   }
 }
 

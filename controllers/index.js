@@ -5,6 +5,7 @@ const contactRoutes = require("./contact-routes");
 const queueRoutes = require("./queuePage-routes");
 const { Policy } = require("../models");
 const policyRoutes = require("./policy-routes");
+const authenticate = require("../utils/auth");
 
 router.use("/api", apiRoutes);
 
@@ -28,7 +29,7 @@ router.use(function (req, res, next) {
 });
 router.use("/", homeRoutes);
 router.use("/contact", contactRoutes);
-router.use("/queue", queueRoutes);
+router.use("/queue", authenticate, queueRoutes);
 router.use("/policies", policyRoutes);
 
 router.use((req, res) => {

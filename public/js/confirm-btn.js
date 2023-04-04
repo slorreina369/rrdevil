@@ -3,10 +3,10 @@ async function confirmFormHandler(event) {
 
   const form = event.target.closest("form");
 
-  const title = form.querySelector(".title").innerText.trim();
-  const author = form.querySelector(".author").innerText.trim();
-  const article_url = form.querySelector(".art_url").innerText.trim();
-  const summary = form.querySelector(".summary").innerText.trim();
+  const title = form.querySelector(".title").value.trim();
+  const author = form.querySelector(".author").value.trim();
+  const article_url = form.querySelector(".art_url").value.trim();
+  const summary = form.querySelector(".summary").value.trim();
 
   const policy_id = form.querySelector(".policy-choice").value.trim();
   const submission_id = form.querySelector(".submission-id").value.trim();

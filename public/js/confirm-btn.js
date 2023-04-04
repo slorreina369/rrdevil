@@ -27,7 +27,7 @@ async function confirmFormHandler(event) {
         console.log(response);
       })
       .then(() => {
-        return fetch(`api/queue/${submission_id}`, {
+        return fetch(`/api/queue/${submission_id}`, {
           method: "DELETE",
         });
       })

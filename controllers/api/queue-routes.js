@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Queue, Article } = require("../../models");
+const authenticate = require("../../utils/auth");
 const {
   submissionResponse,
   approvedEmail,
@@ -7,7 +8,7 @@ const {
 } = require("../emails/send");
 
 //GET All
-router.get("/", (req, res) => {
+router.get("/", authenticate, (req, res) => {
   Queue.findAll()
     .then((dbQueueData) => res.json(dbQueueData))
     .catch((err) => {
@@ -16,7 +17,7 @@ router.get("/", (req, res) => {
     });
 });
 //GET ONE
-router.get("/:id", (req, res) => {
+router.get("/:id", authenticate, (req, res) => {
   Queue.findOne({
     where: {
       id: req.params.id,
@@ -72,7 +73,7 @@ router.post("/", async (req, res) => {
     });
 });
 //PUT
-router.put("/:id", (req, res) => {
+router.put("/:id", authenticate, (req, res) => {
   Queue.update(req.body, {
     where: {
       id: req.params.id,
@@ -92,7 +93,7 @@ router.put("/:id", (req, res) => {
     });
 });
 //DELETE
-router.delete("/:id", (req, res) => {
+router.delete("/:id", authenticate, (req, res) => {
   Queue.findOne({
     where: {
       id: req.params.id,

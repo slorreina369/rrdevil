@@ -25,6 +25,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.7",
+    "google-auth-library": "^8.7.0",
     "googleapis": "^105.0.0",
     "link-preview-js": "^3.0.4",
     "mysql2": "^3.0.1",

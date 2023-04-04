@@ -120,11 +120,13 @@ router.delete("/:id", (req, res) => {
             },
           }).then((approvedArticle) => {
             if (approvedArticle) {
-              approvedEmail(queue.email);
-              console.log("email sent");
+              approvedEmail(queue.email).then(() =>
+                console.log("approval email sent")
+              );
             } else {
-              declineEmail(queue.email);
-              console.log("email sent");
+              declineEmail(queue.email).then(() =>
+                console.log("decline email sent")
+              );
             }
           });
         });

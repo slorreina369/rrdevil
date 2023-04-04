@@ -1,15 +1,18 @@
+const fs = require("fs").promises;
 const path = require("path");
 const { google } = require("googleapis");
-const { authenticate } = require("@google-cloud/local-auth");
 
-const gmail = google.gmail("v1");
+const TOKEN_PATH = path.join(process.cwd(), "./config/token.json");
+
+async function getClient() {
+  const content = await fs.readFile(TOKEN_PATH);
+  const credentials = JSON.parse(content);
+
+  return google.auth.fromJSON(credentials);
+}
 
 async function sendEmail(subject, recipientEmail, body) {
-  const auth = await authenticate({
-    keyfilePath: path.join(__dirname, "../../config/credentials.json"),
-    scopes: ["https://www.googleapis.com/auth/gmail.send"],
-  });
-  google.options({ auth });
+  const gmail = google.gmail({ version: "v1", auth: await getClient() });
 
   const messageParts = [
     "From: Lorreina Guyett <lorreinag93@gmail.com>",

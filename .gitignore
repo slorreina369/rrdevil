@@ -4,3 +4,4 @@ node_modules
 bin
 /config/credentials.json
 /config/token.json
+/config/key.json

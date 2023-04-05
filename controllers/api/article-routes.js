@@ -46,7 +46,7 @@ router.get("/:id", (req, res) => {
     });
 });
 //POST
-router.post("/", (req, res) => {
+router.post("/", authenticate, (req, res) => {
   Article.create({
     title: req.body.title,
     author: req.body.author,

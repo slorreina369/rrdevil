@@ -5,27 +5,15 @@
     data-bs-ride="carousel"
   >
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <a href="#"><img
-            class="d-block w-100 h-50"
-            src="/assets/images/sample_one.jpg"
-            alt="First slide"
-          /></a>
-      </div>
-      <div class="carousel-item">
-        <a href="#"><img
-            class="d-block w-100 h-50"
-            src="/assets/images/sample_two.jpg"
-            alt="Second slide"
-          /></a>
-      </div>
-      <div class="carousel-item">
-        <a href="#"><img
-            class="d-block w-100 h-50"
-            src="/assets/images/sample_three.jpg"
-            alt="Third slide"
-          /></a>
-      </div>
+      {{#each articles}}
+        <div class="carousel-item {{#if @first}}active{{/if}}">
+          <a href="{{preview.url}}"><img
+              class="d-block w-100 h-50"
+              src="{{preview.images}}"
+              alt="First slide"
+            /></a>
+        </div>
+      {{/each}}
     </div>
   </div>
 </section>

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Article } = require("../models");
 const { getLinkPreview } = require("link-preview-js");
+const shuffle = require("../utils/randomizer");
 
 router.get("/", (req, res) => {
   Article.findAll({
@@ -21,7 +22,7 @@ router.get("/", (req, res) => {
       );
     })
     .then((articles) => {
-      console.log(articles);
+      shuffle(articles);
       res.render("homepage", { articles });
     })
     .catch((err) => {

@@ -38,6 +38,15 @@ async function newFormHandler(event) {
   }
 }
 
+//Clear server error message when article_url changes
+function articleUrlChangeHandler(event) {
+  event.target.setCustomValidity("");
+}
+
 document
   .querySelector(".new-article-form")
   .addEventListener("submit", newFormHandler);
+
+document
+  .querySelector("#article_url")
+  .addEventListener("input", articleUrlChangeHandler);

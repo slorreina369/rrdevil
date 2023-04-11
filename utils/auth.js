@@ -1,3 +1,4 @@
+//middleware used for authentication
 function authenticate(req, res, next) {
   const auth = {
     login: process.env.ADMIN_LOGIN,

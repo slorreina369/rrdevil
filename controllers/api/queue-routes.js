@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
       article_url: req.body.article_url,
     },
   };
-  console.log(query_filter);
+  //Checking for duplicates before creating
   if (
     (await Article.findOne(query_filter)) ||
     (await Queue.findOne(query_filter))
@@ -115,6 +115,7 @@ router.delete("/:id", authenticate, (req, res) => {
           res.json(dbQueueData);
         })
         .then(() => {
+          //send approval/decline email
           return Article.findOne({
             where: {
               article_url: queue.article_url,

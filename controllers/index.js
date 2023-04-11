@@ -10,6 +10,7 @@ const authenticate = require("../utils/auth");
 router.use("/api", apiRoutes);
 
 router.use(function (req, res, next) {
+  //make policy list available in all routes
   Policy.findAll({
     attributes: ["id", "name"],
   })

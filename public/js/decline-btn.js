@@ -1,6 +1,7 @@
-async function deleteFormHandler(event) {
+async function declineBtnHandler(event) {
   event.preventDefault();
 
+  //Get the id of the specific submission being declined(to prevent chaos)
   const id = event.target.closest(".queue-list-itm").dataset.id;
 
   const response = await fetch(`/api/queue/${id}`, {
@@ -17,5 +18,5 @@ async function deleteFormHandler(event) {
 }
 
 document.querySelectorAll(".decline").forEach((el) => {
-  el.addEventListener("click", deleteFormHandler);
+  el.addEventListener("click", declineBtnHandler);
 });

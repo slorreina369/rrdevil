@@ -18,7 +18,9 @@
             href="{{preview.url}}"
             card="card-link"
             target="_blank"
-          >{{preview.title}}</a>
+          >
+            {{preview.title}}
+          </a>
         </div>
         <div class="author">
           Written by
@@ -36,16 +38,20 @@
         <button
           type="button"
           class="decline btn btn-outline-danger"
-        >Decline</button>
+        >
+          Decline
+        </button>
         <button
           type="button"
           class="accept btn btn-outline-success"
-        >Accept</button>
+        >
+          Accept
+        </button>
       </div>
       {{>accept-form policies=../policies}}
     </li>
   {{/each}}
 </ul>
 
-<script src="/js/decline-queue.js"></script>
-<script src="/js/approve-queue.js"></script>
+<script src="/js/decline-btn.js"></script>
+<script src="/js/approve-btn.js"></script>

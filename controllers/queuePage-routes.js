@@ -17,6 +17,7 @@ router.get("/", (req, res) => {
     .then((dbQueueData) => {
       const queues = dbQueueData.map((queue) => queue.get({ plain: true }));
 
+      //pulling article metadata to be displayed on the homepage
       return Promise.all(
         queues.map((queue) =>
           getLinkPreview(queue.article_url).then((data) => ({

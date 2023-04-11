@@ -4,6 +4,10 @@ const { google } = require("googleapis");
 
 const TOKEN_PATH = path.join(process.cwd(), "./config/token.json");
 
+/**
+ * initializes googleapi client using app credentials
+ * @returns
+ */
 async function getClient() {
   const content = await fs.readFile(TOKEN_PATH);
   const credentials = JSON.parse(content);
@@ -11,6 +15,13 @@ async function getClient() {
   return google.auth.fromJSON(credentials);
 }
 
+/**
+ * Helper function to send email using base template
+ * @param {string} subject
+ * @param {string} recipientEmail
+ * @param {string} body
+ * @returns promise containing response data from googleapi
+ */
 async function sendEmail(subject, recipientEmail, body) {
   const gmail = google.gmail({ version: "v1", auth: await getClient() });
 
@@ -40,9 +51,15 @@ async function sendEmail(subject, recipientEmail, body) {
       raw: encodedMessage,
     },
   });
-  console.log(res.data);
+
   return res.data;
 }
+
+/**
+ * Sends confirmation email for article submission
+ * @param {string} recipientEmail
+ * @returns promise containing response data from googleapi
+ */
 async function submissionResponse(recipientEmail) {
   subject = "Thank you for your submission";
   body = [
@@ -54,12 +71,24 @@ async function submissionResponse(recipientEmail) {
 
   return sendEmail(subject, recipientEmail, body);
 }
+
+/**
+ * Sends approval email for when article has been approved
+ * @param {string} recipientEmail
+ * @returns promise containing response data from googleapi
+ */
 async function approvedEmail(recipientEmail) {
   subject = "Your submission was approved";
   body = [];
 
   return sendEmail(subject, recipientEmail, body);
 }
+
+/**
+ * Sends decline email for when article has been rejected
+ * @param {string} recipientEmail
+ * @returns promise containing response data from googleapi
+ */
 async function declineEmail(recipientEmail) {
   subject = "Your submission was declined";
   body = [];

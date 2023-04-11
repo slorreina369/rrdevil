@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Article } = require("../models");
 const { getLinkPreview } = require("link-preview-js");
-const shuffle = require("../utils/randomizer");
+const shuffle = require("../utils/shuffle");
 
 router.get("/", (req, res) => {
   Article.findAll({
@@ -12,6 +12,7 @@ router.get("/", (req, res) => {
         article.get({ plain: true })
       );
 
+      //pulling article metadata to be displayed on the homepage
       return Promise.all(
         articles.map((article) =>
           getLinkPreview(article.article_url).then((data) => ({

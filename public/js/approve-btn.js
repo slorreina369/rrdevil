@@ -1,3 +1,4 @@
+//Show confirmation form when clicking "accept" button
 document.querySelectorAll(".accept").forEach((el) => {
   el.addEventListener(
     "click",

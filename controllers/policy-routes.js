@@ -24,8 +24,8 @@ router.get("/:id", async (req, res) => {
         return;
       }
       const policy = dbPolicyData.get({ plain: true });
-      console.log(policy.articles);
 
+      //pulling article metadata to be displayed on the homepage
       return Promise.all(
         policy.articles.map((article) =>
           getLinkPreview(article.article_url).then((data) => ({
@@ -36,7 +36,6 @@ router.get("/:id", async (req, res) => {
       );
     })
     .then((articles) => {
-      console.log(articles);
       res.render("policy", {
         articles,
       });

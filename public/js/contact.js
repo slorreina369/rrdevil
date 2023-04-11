@@ -1,7 +1,8 @@
-//display queue list
+//submit form to add an item to queue
 async function newFormHandler(event) {
   event.preventDefault();
 
+  //Get form values
   const title = document.querySelector("#art_title").value.trim();
   const author = document.querySelector("#art_author").value.trim();
   const article_url = document.querySelector("#article_url").value.trim();
@@ -27,6 +28,7 @@ async function newFormHandler(event) {
       } else {
         const article_url_input = document.querySelector("#article_url");
 
+        //Message should only be returned if article_url is a duplicate
         response.json().then(({ message }) => {
           article_url_input.setCustomValidity(message);
           article_url_input.reportValidity();

@@ -28,6 +28,7 @@ Article.init(
     },
     policy_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "policy",
         key: "id",

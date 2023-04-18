@@ -1,0 +1,138 @@
+<section class="contact">
+  <div class="message">
+    <div>
+      <h2>Contact Me</h2>
+    </div>
+    <div>
+      <p>
+        Feel free to reach out if you have any questions or concerns
+      </p>
+      <div class="message-form">
+        <form
+          action="mailto:lorreinag93@gmail.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <div class="mb-3">
+            <label for="contact-name" class="col-sm-2 col-form-label">
+              Name
+            </label>
+            <input
+              id="contact-name"
+              type="text"
+              class="form-control"
+              placeholder="What do I call you?"
+              required
+            />
+          </div>
+          <div>
+            <label for="contact-email" class="col-sm-2 col-form-label">
+              Email
+            </label>
+            <input
+              id="contact-email"
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="contact-message" class="col-sm-2 col-form-label">
+              Message
+            </label>
+            <textarea
+              id="contact-message"
+              class="form-control form-control-lg"
+              placeholder="Message"
+              rows="10"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-outline-secondary mt-4">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="submit message-form">
+    <h3>Add Your Own Article</h3>
+    <form class="new-article-form">
+      <div class="mb-3">
+        <label for="article_title" class="col-sm-3 col-form-label">Title</label>
+        <input
+          id="art_title"
+          type="text"
+          class="form-control"
+          placeholder="Title"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="article_author" class="col-sm-3 col-form-label">
+          Author
+        </label>
+        <input
+          id="art_author"
+          type="text"
+          class="form-control"
+          placeholder="Author"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="article_url" class="col-sm-3 col-form-label">Article</label>
+        <input
+          id="article_url"
+          type="url"
+          class="form-control"
+          placeholder="Provide an Article link"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="policy" class="col-sm-3 col-form-label">Policy Category</label>
+        <input
+          id="policy_cat"
+          type="text"
+          class="form-control"
+          placeholder="Policy Category"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="summary" class="col-sm-3 col-form-label">Summary</label>
+        <textarea
+          id="summary-message"
+          class="form-control form-control-lg"
+          placeholder="Summary"
+        ></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="email">How Can We Reach You?</label>
+        <input
+          id="contact_email"
+          type="email"
+          class="form-control"
+          placeholder="Email"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-outline-secondary mt-4">
+        Submit
+      </button>
+
+    </form>
+  </div>
+</section>
+
+<script src="./js/contact.js"></script>

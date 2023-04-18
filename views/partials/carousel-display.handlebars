@@ -1,0 +1,19 @@
+<section class="container">
+  <div
+    id="carouselExampleSlidesOnly"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      {{#each (upto articles 3)}}
+        <div class="carousel-item {{#if @first}}active{{/if}}">
+          <a href="{{preview.url}}"><img
+              class="d-block w-100 h-50"
+              src="{{preview.images}}"
+            /></a>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+

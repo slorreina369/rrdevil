@@ -1,0 +1,57 @@
+<ul class="queue-list list-group-flush m-2 p-0">
+  {{#each queues}}
+    <li
+      data-id="{{id}}"
+      class="queue-list-itm list-group-item card border border-6 rounded m-5 p-2 mx-auto"
+      style="width: 60rem;"
+    >
+      <article class="queue card-body">
+        <div class="img">
+          <img
+            src="{{preview.images}}"
+            class="card-img-top"
+            style="height: 25rem;"
+          />
+        </div>
+        <div class="title card-title d-flex flex-column">
+          <a
+            href="{{preview.url}}"
+            card="card-link"
+            target="_blank"
+          >
+            {{preview.title}}
+          </a>
+        </div>
+        <div class="author">
+          Written by
+          {{author}}
+        </div>
+        <div class="summary">
+          {{preview.description}}
+        </div>
+        <div class="fw-bold">
+          Submitted by
+          {{email}}
+        </div>
+      </article>
+      <div class="buttons float-end">
+        <button
+          type="button"
+          class="decline btn btn-outline-danger"
+        >
+          Decline
+        </button>
+        <button
+          type="button"
+          class="accept btn btn-outline-success"
+        >
+          Accept
+        </button>
+      </div>
+      {{>accept-form policies=../policies}}
+    </li>
+  {{/each}}
+</ul>
+
+<script src="/js/decline-btn.js"></script>
+<script src="/js/approve-btn.js"></script>

@@ -1,0 +1,62 @@
+<dialog class="accept-dia align-text-top my-auto mx-auto">
+  <form
+    class="accept-form container-fluid"
+    method="dialog"
+    style="width: 70vw;"
+  >
+    <input type="hidden" class="submission-id" value="{{id}}" />
+    <h3 class="m-3">Please Confirm</h3>
+    <div class="form-group m-3">
+      <label>Title:</label>
+      <input
+        name="title"
+        class="title form-control form-control-lg"
+        value="{{preview.title}}"
+        readonly
+      />
+    </div>
+    <div class="form-group m-3">
+      <label>Author:</label>
+      <input
+        name="author"
+        class="author form-control form-control-lg"
+        value="{{author}}"
+        readonly
+      />
+    </div>
+    <div class="form-group m-3">
+      <label>Article Link:</label>
+      <input
+        name="art_url"
+        class="art_url form-control form-control-lg"
+        value="{{preview.url}}"
+        readonly
+      />
+    </div>
+    <div class="form-group m-3">
+      <label>Summary:</label>
+      <textarea
+        name="summary"
+        class="summary form-control form-control-lg"
+        value="{{preview.description}}"
+        readonly
+      >{{preview.description}}</textarea>
+    </div>
+    <div class="form-group m-3">
+      <label>Which Policy?</label>
+      <select class="policy-choice form-control form-control-lg">
+        <option value="default">Choose...</option>
+        {{#each policies}}
+          <option value="{{id}}">{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="d-table mx-auto mt-3 mb-3">
+      <button type="button" class="close-btn btn btn-outline-danger">
+        Nevermind
+      </button>
+      <button type="submit" class="btn btn-outline-success">Confirm</button>
+    </div>
+  </form>
+</dialog>
+<script src="/js/confirm-btn.js"></script>

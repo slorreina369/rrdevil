@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Policy, Article } = require("../../models");
+const authenticate = require("../../utils/auth");
 
 //GET ALL
 router.get("/", (req, res) => {
@@ -47,7 +48,7 @@ router.get("/:id", (req, res) => {
   });
 });
 //POST
-router.post("/", (req, res) => {
+router.post("/", authenticate, (req, res) => {
   Policy.create({
     name: req.body.name,
   })
@@ -58,7 +59,7 @@ router.post("/", (req, res) => {
     });
 });
 //PUT
-router.put("/:id", (req, res) => {
+router.put("/:id", authenticate, (req, res) => {
   Policy.update(req.body, {
     where: {
       id: req.params.id,
@@ -71,7 +72,7 @@ router.put("/:id", (req, res) => {
   });
 });
 //DELETE
-router.delete("/:id", (req, res) => {
+router.delete("/:id", authenticate, (req, res) => {
   Policy.destroy({
     where: {
       id: req.params.id,

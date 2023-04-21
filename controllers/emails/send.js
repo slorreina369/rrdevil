@@ -87,7 +87,13 @@ async function sendContactEmail(name, contactEmail, body) {
  */
 async function approvedEmail(recipientEmail) {
   subject = "Your submission was approved";
-  body = [];
+  body = [
+    "Your submission was finally reviewed! Hurray!",
+    " ",
+    "It has now need added to our collection of articles.",
+    "You can find it under one of the policy categories, based on the contents of the article itself.",
+    "Please continue submitting any other additional articles you feel should be on here",
+  ].join("\r\n");
 
   return sendEmail(subject, recipientEmail, body);
 }

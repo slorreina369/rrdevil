@@ -7,7 +7,6 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   sendContactEmail(req.body.name, req.body.email, req.body.message);
-  console.log(req.body.name, req.body.email, req.body.message);
   res.render("acknowledge");
 });
 

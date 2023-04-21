@@ -3,6 +3,7 @@ const path = require("path");
 const { google } = require("googleapis");
 
 const TOKEN_PATH = path.join(process.cwd(), "./config/token.json");
+const ADMIN_EMAIL = "lorreinag93@gmail.com";
 
 /**
  * initializes googleapi client using app credentials
@@ -26,9 +27,9 @@ async function sendEmail(subject, recipientEmail, body) {
   const gmail = google.gmail({ version: "v1", auth: await getClient() });
 
   const messageParts = [
-    "From: Lorreina Guyett <lorreinag93@gmail.com>",
+    `From: <${ADMIN_EMAIL}>`,
     `To: <${recipientEmail}>`,
-    "Content-Type:text/html; charset=utf-8",
+    "Content-Type:text/plain; charset=utf-8",
     "MIME-Version: 1.0",
     `Subject: ${subject}`,
     "",
@@ -37,7 +38,7 @@ async function sendEmail(subject, recipientEmail, body) {
     "Thank you,",
     "Ronald Reagan Haters",
   ];
-  const message = messageParts.join("\n");
+  const message = messageParts.join("\r\n");
 
   const encodedMessage = Buffer.from(message)
     .toString("base64")
@@ -67,11 +68,17 @@ async function submissionResponse(recipientEmail) {
     " ",
     "Before it is added to the list of articles, the submission will need to be reviewed.",
     "You'll be updated on whether or not the article is added to the list.",
-  ];
+  ].join("\r\n");
 
   return sendEmail(subject, recipientEmail, body);
 }
 
+async function sendContactEmail(name, contactEmail, body) {
+  const subject = "Contact Form Submission";
+  const message = `From: ${name} ${contactEmail}\r\n ${body}`;
+
+  return sendEmail(subject, ADMIN_EMAIL, message);
+}
 /**
  * Sends approval email for when article has been approved
  * @param {string} recipientEmail
@@ -79,7 +86,13 @@ async function submissionResponse(recipientEmail) {
  */
 async function approvedEmail(recipientEmail) {
   subject = "Your submission was approved";
-  body = [];
+  body = [
+    "Your submission was finally reviewed! Hurray!",
+    " ",
+    "It has now been added to our collection of articles.",
+    "You can find it under one of the policy categories, based on the contents of the article itself.",
+    "Please continue submitting any other additional articles you feel should be on here",
+  ].join("\r\n");
 
   return sendEmail(subject, recipientEmail, body);
 }
@@ -91,8 +104,19 @@ async function approvedEmail(recipientEmail) {
  */
 async function declineEmail(recipientEmail) {
   subject = "Your submission was declined";
-  body = [];
+  body = [
+    "Your submission was finally reviewed! Hurray!",
+    " ",
+    "Sadly, it was decided that your submission would be rejected.",
+    "This may be because it was a duplicate or another reason",
+    "You are encouraged to continue submitting other Reagan articles",
+  ].join("\r\n");
 
   return sendEmail(subject, recipientEmail, body);
 }
-module.exports = { submissionResponse, approvedEmail, declineEmail };
+module.exports = {
+  submissionResponse,
+  approvedEmail,
+  declineEmail,
+  sendContactEmail,
+};

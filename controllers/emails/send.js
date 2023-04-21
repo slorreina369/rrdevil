@@ -89,7 +89,7 @@ async function approvedEmail(recipientEmail) {
   body = [
     "Your submission was finally reviewed! Hurray!",
     " ",
-    "It has now added to our collection of articles.",
+    "It has now been added to our collection of articles.",
     "You can find it under one of the policy categories, based on the contents of the article itself.",
     "Please continue submitting any other additional articles you feel should be on here",
   ].join("\r\n");

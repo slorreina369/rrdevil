@@ -38,7 +38,6 @@ async function sendEmail(subject, recipientEmail, body) {
     "Thank you,",
     "Ronald Reagan Haters",
   ];
-  console.log(body);
   const message = messageParts.join("\r\n");
 
   const encodedMessage = Buffer.from(message)

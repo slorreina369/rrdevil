@@ -69,7 +69,7 @@ async function submissionResponse(recipientEmail) {
     " ",
     "Before it is added to the list of articles, the submission will need to be reviewed.",
     "You'll be updated on whether or not the article is added to the list.",
-  ];
+  ].join("\r\n");
 
   return sendEmail(subject, recipientEmail, body);
 }
@@ -99,7 +99,13 @@ async function approvedEmail(recipientEmail) {
  */
 async function declineEmail(recipientEmail) {
   subject = "Your submission was declined";
-  body = [];
+  body = [
+    "Your submission was finally reviewed! Hurray!",
+    " ",
+    "Sadly, it was decided that your submission would be rejected.",
+    "This may be because it was a duplicate or another reason",
+    "You are encouraged to continue submitting other Reagan articles",
+  ].join("\r\n");
 
   return sendEmail(subject, recipientEmail, body);
 }

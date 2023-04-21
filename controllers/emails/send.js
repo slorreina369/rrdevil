@@ -3,6 +3,7 @@ const path = require("path");
 const { google } = require("googleapis");
 
 const TOKEN_PATH = path.join(process.cwd(), "./config/token.json");
+const ADMIN_EMAIL = "lorreinag93@gmail.com";
 
 /**
  * initializes googleapi client using app credentials
@@ -26,9 +27,9 @@ async function sendEmail(subject, recipientEmail, body) {
   const gmail = google.gmail({ version: "v1", auth: await getClient() });
 
   const messageParts = [
-    "From: Lorreina Guyett <lorreinag93@gmail.com>",
+    `From: <${ADMIN_EMAIL}>`,
     `To: <${recipientEmail}>`,
-    "Content-Type:text/html; charset=utf-8",
+    "Content-Type:text/plain; charset=utf-8",
     "MIME-Version: 1.0",
     `Subject: ${subject}`,
     "",
@@ -37,7 +38,8 @@ async function sendEmail(subject, recipientEmail, body) {
     "Thank you,",
     "Ronald Reagan Haters",
   ];
-  const message = messageParts.join("\n");
+  console.log(body);
+  const message = messageParts.join("\r\n");
 
   const encodedMessage = Buffer.from(message)
     .toString("base64")
@@ -72,6 +74,12 @@ async function submissionResponse(recipientEmail) {
   return sendEmail(subject, recipientEmail, body);
 }
 
+async function sendContactEmail(name, contactEmail, body) {
+  const subject = "Contact Form Submission";
+  const message = `From: ${name} ${contactEmail}\r\n ${body}`;
+
+  return sendEmail(subject, ADMIN_EMAIL, message);
+}
 /**
  * Sends approval email for when article has been approved
  * @param {string} recipientEmail
@@ -95,4 +103,9 @@ async function declineEmail(recipientEmail) {
 
   return sendEmail(subject, recipientEmail, body);
 }
-module.exports = { submissionResponse, approvedEmail, declineEmail };
+module.exports = {
+  submissionResponse,
+  approvedEmail,
+  declineEmail,
+  sendContactEmail,
+};

@@ -2,7 +2,7 @@
 
 ## Description
 
-A website built to consolidate as many articles about Ronald Reagan and the effects of his policies. This website is intended to be a collabrative effort, for people to find and submit potential articles. Once an article is approved and hosted on the website, they will be displayed and organized based on political category. The articles will link back to the original host of the article in order to ensure that they obtain the credit for hosting the full article.
+A website built to consolidate as many articles about Ronald Reagan and the effects of his policies. This website is intended to be a collaborative effort, for people to find and submit potential articles. Once an article is approved and hosted on the website, they will be displayed and organized based on political category. The articles will link back to the original host of the article in order to ensure that they obtain the credit for hosting the full article.
 
 ## Table of Contents
 

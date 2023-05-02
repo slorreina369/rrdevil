@@ -2,24 +2,37 @@ const { getLinkPreview } = require("link-preview-js");
 const { redisCache } = require("../config/cache");
 
 /**
- *fetches Open Data information for link preview purposes
- * @param {string} article_url
+ *Fetches Open Data information for link preview purposes
+ * @param article
  * @returns Promise
  */
-async function getLinkData(article_url) {
-  let results;
+async function getLinkData(article) {
+  let results = { url: article.article_url };
   try {
-    const cacheResults = await redisCache.get(article_url);
+    const cacheResults = await redisCache.get(article.article_url);
     if (cacheResults) {
       results = JSON.parse(cacheResults);
     } else {
-      results = await getLinkPreview(article_url);
-      redisCache.set(article_url, JSON.stringify(results));
+      results = await getLinkPreview(article.article_url);
+
+      redisCache.set(article.article_url, JSON.stringify(results));
     }
-    return results;
   } catch (error) {
     console.error(`Error: ${error}`);
   }
+
+  //Fall back to user submitted data if link preview data isn't present
+  if (!results.title) {
+    results.title = article.title;
+  }
+  if (!results.description) {
+    results.description = article.description;
+  }
+  if (results.images === undefined || results.images.length === 0) {
+    results.images = "/assets/rr_devildefault.jpg";
+  }
+
+  return results;
 }
 
 module.exports = { getLinkData };

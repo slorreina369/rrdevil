@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Policy, Article } = require("../models");
-const { getLinkPreview } = require("link-preview-js");
+const { getLinkData } = require("../utils/getLinkData");
 
 router.get("/:id", async (req, res) => {
   Policy.findOne({
@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
       //pulling article metadata to be displayed on the homepage
       return Promise.all(
         policy.articles.map((article) =>
-          getLinkPreview(article.article_url).then((data) => ({
+          getLinkData(article).then((data) => ({
             ...article,
             preview: data,
           }))

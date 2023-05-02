@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Queue } = require("../models");
-const { getLinkPreview } = require("link-preview-js");
+const { getLinkData } = require("../utils/getLinkData");
 
 router.get("/", (req, res) => {
   Queue.findAll({
@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
       //pulling article metadata to be displayed on the homepage
       return Promise.all(
         queues.map((queue) =>
-          getLinkPreview(queue.article_url).then((data) => ({
+          getLinkData(queue).then((data) => ({
             ...queue,
             preview: data,
           }))

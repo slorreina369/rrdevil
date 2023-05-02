@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
       //pulling article metadata to be displayed on the homepage
       return Promise.all(
         articles.map((article) =>
-          getLinkData(article.article_url).then((data) => ({
+          getLinkData(article).then((data) => ({
             ...article,
             preview: data,
           }))

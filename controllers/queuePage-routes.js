@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
       //pulling article metadata to be displayed on the homepage
       return Promise.all(
         queues.map((queue) =>
-          getLinkData(queue.article_url).then((data) => ({
+          getLinkData(queue).then((data) => ({
             ...queue,
             preview: data,
           }))

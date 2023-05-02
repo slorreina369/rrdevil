@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
       //pulling article metadata to be displayed on the homepage
       return Promise.all(
         policy.articles.map((article) =>
-          getLinkData(article.article_url).then((data) => ({
+          getLinkData(article).then((data) => ({
             ...article,
             preview: data,
           }))
